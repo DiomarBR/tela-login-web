@@ -15,7 +15,7 @@
         </div>
         <div class="form">
               <div class="card">
-                <h4 class="title">Log In!</h4>
+                <h4 class="title" id="mensagem">Log In!</h4>
                 <form id="formulario">
                   <div class="field">
                     <svg class="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -33,17 +33,14 @@
                     </svg>
                     <input autocomplete="off" id="pass" placeholder="Password" class="input-field" name="pass" type="password">
                   </div>
-                  <button id="btn-login" class="btn" type="submit" return false">Login
-                  </button>
-                  <a href="registro.html" class="btn-link">registe-se</a>
+                  <button class="btn" type="submit">Login</button>
+                  <a href="registro.html" class="btn-link">Registre-se</a>
                 </form>
               </div>
         </div>
     </main>
-    <div id="mensagem"></div>
-
   <script>
-    document.getElementById('btn-login').addEventListener('submit', function(event) {
+    document.getElementById('formulario').addEventListener('submit', function(event) {
       event.preventDefault();
       
       const email = document.getElementById('email').value;
@@ -64,12 +61,12 @@
       })
       .then(data => {
         document.getElementById('mensagem').textContent = data.message;
-        // Redirecionar o usuário, esconder formulário, etc.
-        window.location.href = '/pagina-logada.html'; // Substitua com a página desejada
+    
+        window.location.href = 'https://diomarbr.github.io/cv-online/';
       })
       .catch(error => {
         console.error('Erro ao fazer login:', error);
-        document.getElementById('mensagem').textContent = 'Erro ao fazer login';
+        document.getElementById('mensagem').textContent = 'Erro ao fazer login  usuario ou senha incorreto';
       });
     });
   </script>

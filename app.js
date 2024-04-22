@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require('express-session');
 const cors = require("cors");
 const sqlite3 = require("sqlite3").verbose();
 
@@ -45,6 +46,12 @@ app.post("/usuarios", (req, res) => {
   );
 });
 
+app.use(session({
+  secret: 'dawdawfoefnnadpkamkdmi',
+  resave: false,
+  saveUninitialized: true
+}));
+
 // Rota de login
 app.post("/login", (req, res) => {
   const { email, pass } = req.body;
@@ -64,10 +71,4 @@ app.post("/login", (req, res) => {
       res.json({ message: "Login bem-sucedido" });
     }
   );
-});
-
-// Rota de logout
-app.post("/logout", (req, res) => {
-  req.session.destroy(); // Destroi a sessão do usuário (logout)
-  res.json({ message: "Logout bem-sucedido" });
 });
