@@ -9,7 +9,7 @@ const port = 3000;
 app.use(express.json());
 app.use(cors()); // Adiciona o middleware CORS
 
-const db = new sqlite3.Database("logindb.db");
+const db = new sqlite3.Database("database/logindb.db");
 
 app.listen(port, () => {
   console.log(`Servidor está rodando na porta ${port}`);
